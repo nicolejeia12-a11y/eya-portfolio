@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>★ eya's portfolio ★</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hot-pink: #ff2d78;
+      --deep-pink: #c0006a;
+      --magenta: #ff00aa;
+      --dark-bg: #0d0009;
+      --dark-panel: #1a0014;
+      --panel-border: #ff2d78;
+      --star-gold: #ffd700;
+      --star-pink: #ff69b4;
+      /* ── CONTRAST IMPROVED ── */
+      --text-main: #fff0f8;
+      --text-dim: #e8aacb;
+      --text-bright: #ffffff;
+      --link: #ff85c0;
+      --link-hover: #fff;
+      --accent-purple: #b44fff;
+      --accent-cyan: #00fff7;
+      --scrollbar-thumb: #ff2d78;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--dark-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+
+    body {
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ctext y='20' font-size='20' fill='%23ff69b4'%3E♡%3C/text%3E%3C/svg%3E"), auto;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,45,120,0.10) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(155,0,232,0.10) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ctext x='10' y='30' font-size='22' fill='%23ff2d7828'%3E★%3C/text%3E%3Ctext x='70' y='70' font-size='14' fill='%23c0006a28'%3E✦%3C/text%3E%3Ctext x='30' y='90' font-size='10' fill='%23ff69b428'%3E✩%3C/text%3E%3Ctext x='90' y='20' font-size='18' fill='%23ff2d7820'%3E☆%3C/text%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sparkle-layer { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+    .sparkle { position: absolute; font-size: 1.2rem; animation: floatSpark linear infinite; opacity: 0; }
+    @keyframes floatSpark {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(90deg, #0d0009 0%, #220018 40%, #0d0009 100%);
+      border-bottom: 2px solid var(--hot-pink);
+      display: flex; align-items: center; flex-wrap: wrap;
+      padding: 0 10px;
+      box-shadow: 0 2px 20px rgba(255,45,120,0.5);
+    }
+    #navbar .logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.55rem;
+      color: var(--hot-pink);
+      text-shadow: 0 0 10px var(--hot-pink);
+      padding: 10px 16px 10px 8px;
+      white-space: nowrap;
+    }
+    #navbar a {
+      color: #ffd6ed;
+      text-decoration: none;
+      padding: 8px 10px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    #navbar a:hover { color: #fff; background: rgba(255,45,120,0.18); text-shadow: 0 0 10px var(--hot-pink); }
+    #navbar a.active { color: #fff; text-decoration: underline; text-decoration-color: var(--hot-pink); text-shadow: 0 0 8px var(--hot-pink); }
+
+    /* ── LAYOUT ── */
+    #wrapper {
+      position: relative; z-index: 2;
+      max-width: 1100px;
+      margin: 18px auto;
+      padding: 0 12px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 14px;
+    }
+
+    /* ── PANEL ── */
+    .panel {
+      background: linear-gradient(145deg, #200018 0%, #100009 100%);
+      border: 1.5px solid var(--panel-border);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 14px rgba(255,45,120,0.28), inset 0 0 30px rgba(0,0,0,0.4);
+    }
+    .panel-head {
+      background: linear-gradient(90deg, var(--deep-pink), var(--accent-purple));
+      color: #fff;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      padding: 6px 8px;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px #000;
+    }
+    .panel-body { padding: 10px; }
+
+    /* ── SIDEBAR ── */
+    #sidebar { grid-column: 1; grid-row: 1 / 4; display: flex; flex-direction: column; gap: 12px; }
+
+    #profile-card { text-align: center; }
+    #profile-card .avatar-wrap { position: relative; display: inline-block; margin: 10px auto 6px; }
+    #profile-card .avatar-wrap img {
+      width: 120px; height: 120px;
+      object-fit: cover;
+      border: 3px solid var(--hot-pink);
+      border-radius: 4px;
+      display: block;
+      box-shadow: 0 0 18px var(--hot-pink);
+    }
+    #profile-card .avatar-wrap::after {
+      content: '★';
+      position: absolute; top: -8px; right: -10px;
+      color: var(--star-gold); font-size: 1.3rem;
+      text-shadow: 0 0 6px gold;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #profile-card .username { font-family: 'Shadows Into Light', cursive; font-size: 1.6rem; color: var(--hot-pink); text-shadow: 0 0 12px var(--hot-pink); }
+    #profile-card .tagline { color: #f0b8d8; font-size: 0.88rem; margin: 3px 0 6px; font-style: italic; }
+    .online-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 6px #00ff88; margin-right: 4px; animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+    .mood-line { font-size: 0.88rem; color: #e8aacb; margin: 4px 0; }
+    .mood-line span { color: #ff85c0; font-weight: bold; }
+
+    .sidebar-links a {
+      display: block; padding: 6px 8px;
+      color: #ffaacc;
+      text-decoration: none; font-size: 0.92rem;
+      border-bottom: 1px solid rgba(255,45,120,0.15);
+      transition: all 0.2s;
+    }
+    .sidebar-links a:hover { color: #fff; background: rgba(255,45,120,0.18); padding-left: 14px; text-shadow: 0 0 8px var(--hot-pink); }
+    .sidebar-links a::before { content: '✦ '; color: var(--star-gold); }
+
+    .interest-row { display: flex; justify-content: space-between; border-bottom: 1px dotted rgba(255,45,120,0.22); padding: 4px 0; font-size: 0.88rem; }
+    .interest-row .label { color: #ff85c0; font-weight: bold; }
+    .interest-row .val { color: #e8aacb; text-align: right; max-width: 130px; }
+
+    /* ── MAIN ── */
+    #main { grid-column: 2; display: flex; flex-direction: column; gap: 14px; }
+
+    /* hero */
+    .hero-banner {
+      position: relative; height: 200px;
+      background: linear-gradient(135deg, #0d0009 0%, #3a0030 50%, #0d0009 100%);
+      border: 1.5px solid var(--hot-pink);
+      border-radius: 6px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 32px rgba(255,45,120,0.35);
+    }
+    .hero-banner.small { height: 100px; }
+    .hero-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,45,120,0.05) 18px, rgba(255,45,120,0.05) 20px);
+    }
+    .hero-stars { position: absolute; inset: 0; display: flex; flex-wrap: wrap; overflow: hidden; pointer-events: none; }
+    .hero-star { font-size: 2.5rem; color: var(--hot-pink); opacity: 0.15; animation: twinkle 2s ease-in-out infinite; }
+    .hero-star:nth-child(odd) { color: var(--star-gold); opacity: 0.1; }
+    @keyframes twinkle { 0%,100%{opacity:0.1}50%{opacity:0.35} }
+    .hero-content { position: relative; z-index: 2; text-align: center; }
+    .hero-content h1 {
+      font-family: 'Press Start 2P', monospace; font-size: 1.1rem;
+      color: #fff;
+      text-shadow: 0 0 20px var(--hot-pink), 0 0 40px var(--magenta);
+      line-height: 1.6; animation: glitch 5s infinite;
+    }
+    @keyframes glitch {
+      0%,94%,100% { text-shadow: 0 0 20px var(--hot-pink), 0 0 40px var(--magenta); transform: none; }
+      95% { text-shadow: -2px 0 var(--accent-cyan), 2px 0 var(--hot-pink); transform: translateX(2px); }
+      96% { text-shadow: 2px 0 var(--accent-cyan), -2px 0 var(--hot-pink); transform: translateX(-2px); }
+      97% { transform: none; }
+    }
+    .hero-content p { color: #ffd6ed; font-size: 1.2rem; margin-top: 8px; letter-spacing: 3px; }
+
+    #about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* blinkies */
+    .blinkies { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 0; }
+    .blinkie {
+      display: inline-block; font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem; padding: 3px 6px; border: 1px solid; border-radius: 2px;
+      animation: blinkMe 1s step-end infinite; letter-spacing: 0.5px;
+    }
+    .blinkie.pink   { background:#ff2d78; border-color:#fff; color:#fff; }
+    .blinkie.gold   { background:#5a3900; border-color:#ffd700; color:#ffd700; }
+    .blinkie.cyber  { background:#001a2a; border-color:#00fff7; color:#00fff7; }
+    .blinkie.purple { background:#1a0038; border-color:#cc88ff; color:#cc88ff; }
+    @keyframes blinkMe { 0%,100%{opacity:1}50%{opacity:0} }
+
+    /* skill bars */
+    .skill-bar-wrap { margin: 7px 0; }
+    .skill-label { font-size: 0.9rem; color: #e8aacb; display: flex; justify-content: space-between; }
+    .skill-label span { color: #ff85c0; font-weight: bold; }
+    .skill-bar { height: 8px; background: rgba(255,45,120,0.12); border: 1px solid rgba(255,45,120,0.3); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg, var(--deep-pink), var(--magenta)); box-shadow: 0 0 6px var(--hot-pink); border-radius: 2px; animation: loadBar 1.5s ease forwards; width: 0%; }
+    @keyframes loadBar { to { width: var(--pct); } }
+
+    /* project cards */
+    #projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 8px 0; }
+    .project-card {
+      background: rgba(255,45,120,0.06); border: 1px solid rgba(255,45,120,0.35);
+      border-radius: 4px; padding: 10px; transition: all 0.3s; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before { content: '★'; position: absolute; top: -20px; right: -10px; font-size: 4rem; color: rgba(255,45,120,0.07); transition: 0.3s; }
+    .project-card:hover { background: rgba(255,45,120,0.14); border-color: var(--hot-pink); box-shadow: 0 0 16px rgba(255,45,120,0.35); transform: translateY(-3px); }
+    .project-card:hover::before { top: -5px; opacity: 1; }
+    .project-card h3 { font-family: 'Press Start 2P', monospace; font-size: 0.45rem; color: #ff85c0; margin-bottom: 6px; line-height: 1.6; }
+    .project-card p { font-size: 0.85rem; color: #e8aacb; line-height: 1.4; }
+    .project-tag { display: inline-block; background: rgba(155,0,232,0.2); border: 1px solid #b44fff; color: #d8aaff; font-size: 0.72rem; padding: 1px 5px; border-radius: 2px; margin-top: 5px; }
+
+    /* video thumbnail */
+    .video-thumb-wrap { text-align: center; }
+    .video-thumb-wrap a img { width: 100%; max-width: 700px; border: 2px solid var(--hot-pink); border-radius: 6px; box-shadow: 0 0 22px rgba(255,45,120,0.4); transition: transform 0.3s; display: inline-block; }
+    .video-thumb-wrap a img:hover { transform: scale(1.02); }
+    .video-thumb-wrap .watch-label { margin-top: 10px; color: var(--hot-pink); font-size: 1.1rem; text-shadow: 0 0 8px var(--hot-pink); }
+
+    /* gallery */
+    #gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 8px 0; }
+    #gallery .gal-item { aspect-ratio: 1; background: rgba(255,45,120,0.08); border: 1px solid rgba(255,45,120,0.28); border-radius: 4px; overflow: hidden; position: relative; cursor: pointer; transition: 0.3s; }
+    #gallery .gal-item:hover { border-color: var(--hot-pink); box-shadow: 0 0 14px rgba(255,45,120,0.45); transform: scale(1.04); }
+    #gallery .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+    #gallery .gal-item:hover img { transform: scale(1.1); }
+    #gallery .gal-item .overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(192,0,106,0.75), transparent); opacity: 0; transition: 0.3s; display: flex; align-items: flex-end; padding: 7px; font-size: 0.82rem; color: #fff; text-shadow: 0 1px 3px #000; }
+    #gallery .gal-item:hover .overlay { opacity: 1; }
+
+    /* music player */
+    #music-player { background: rgba(255,45,120,0.06); border: 1px solid rgba(255,45,120,0.3); border-radius: 4px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .track-info { display: flex; align-items: center; gap: 10px; }
+    .track-cover { width: 48px; height: 48px; background: linear-gradient(135deg, var(--deep-pink), var(--accent-purple)); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
+    .track-cover.playing { animation: spin 3s linear infinite; }
+    .track-title { font-size: 1rem; color: #fff0f8; }
+    .track-artist { font-size: 0.88rem; color: #e8aacb; }
+    .player-controls { display: flex; gap: 8px; align-items: center; }
+    .ctrl-btn { background: none; border: 1px solid rgba(255,45,120,0.5); color: #ff85c0; font-size: 1rem; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .ctrl-btn:hover { background: rgba(255,45,120,0.22); border-color: var(--hot-pink); color: #fff; }
+    .progress-bar { flex: 1; height: 4px; background: rgba(255,45,120,0.18); border-radius: 2px; overflow: hidden; cursor: pointer; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--deep-pink), var(--magenta)); border-radius: 2px; width: 0%; transition: width 0.5s; }
+
+    /* lightbox */
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 80vw; max-height: 75vh; border: 2px solid var(--hot-pink); border-radius: 4px; box-shadow: 0 0 44px rgba(255,45,120,0.55); }
+    #lightbox .close-lb { color: var(--hot-pink); font-size: 2rem; cursor: pointer; }
+    #lightbox .lb-caption { color: #f0b8d8; font-size: 1rem; }
+
+    /* visitor counter */
+    #visitor-wrap { text-align: center; padding: 6px; font-family: 'Press Start 2P', monospace; font-size: 0.45rem; color: var(--star-gold); letter-spacing: 2px; text-shadow: 0 0 6px var(--star-gold); }
+
+    /* page sections */
+    .page-section { display: none; }
+    .page-section.active { display: flex; flex-direction: column; gap: 14px; }
+
+    /* ── guestbook / blog entries ── */
+    .gb-entry { border-bottom: 1px dotted rgba(255,45,120,0.25); padding: 8px 0; }
+    .gb-entry .gb-author { color: #ff85c0; font-size: 1rem; font-weight: bold; }
+    .gb-entry .gb-date   { color: #c899b5; font-size: 0.82rem; }
+    .gb-entry .gb-msg    { color: #e8c0d8; margin-top: 3px; line-height: 1.55; }
+
+    /* blog body text */
+    .blog-body { color: #e8c0d8; line-height: 1.75; font-size: 1rem; }
+    .blog-body em { color: var(--hot-pink); font-style: normal; }
+
+    /* read more */
+    .read-more-btn { display: inline-block; margin-top: 6px; color: #ff85c0; cursor: pointer; font-size: 0.9rem; text-decoration: underline; text-underline-offset: 2px; transition: color 0.2s; }
+    .read-more-btn:hover { color: #fff; }
+    .read-more-content { display: none; margin-top: 8px; }
+    .read-more-content.open { display: block; }
+
+    /* forms */
+    .form-group { margin-bottom: 10px; }
+    .form-group label { display: block; color: #ff85c0; font-size: 0.88rem; margin-bottom: 3px; letter-spacing: 1px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,45,120,0.07);
+      border: 1px solid rgba(255,45,120,0.4);
+      border-radius: 3px;
+      color: #fff0f8;
+      font-family: 'VT323', monospace; font-size: 1.05rem;
+      padding: 6px 9px; outline: none; transition: 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--hot-pink); box-shadow: 0 0 8px rgba(255,45,120,0.4); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .btn-send {
+      background: linear-gradient(90deg, var(--deep-pink), var(--accent-purple));
+      border: none; color: #fff;
+      font-family: 'Press Start 2P', monospace; font-size: 0.5rem;
+      padding: 10px 20px; border-radius: 3px; cursor: pointer;
+      letter-spacing: 1px; box-shadow: 0 0 12px rgba(255,45,120,0.4); transition: 0.2s;
+    }
+    .btn-send:hover { background: linear-gradient(90deg, var(--hot-pink), var(--magenta)); box-shadow: 0 0 20px rgba(255,45,120,0.6); transform: translateY(-2px); }
+    .send-msg { font-size: 0.92rem; margin-top: 6px; min-height: 20px; }
+
+    .gb-form { display: flex; gap: 6px; }
+    .gb-form input { flex: 1; background: rgba(255,45,120,0.07); border: 1px solid rgba(255,45,120,0.4); border-radius: 3px; color: #fff0f8; font-family: 'VT323', monospace; font-size: 1.05rem; padding: 5px 8px; outline: none; transition: 0.2s; }
+    .gb-form input:focus { border-color: var(--hot-pink); }
+    .btn-mini { background: var(--deep-pink); border: none; color: #fff; font-family: 'VT323', monospace; font-size: 1rem; padding: 4px 12px; border-radius: 3px; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+    .btn-mini:hover { background: var(--hot-pink); }
+    .guestbook-entries { max-height: 220px; overflow-y: auto; margin-bottom: 10px; }
+
+    /* footer */
+    #footer { position: relative; z-index: 2; text-align: center; padding: 18px; color: #e8aacb; font-size: 0.88rem; border-top: 1px solid rgba(255,45,120,0.25); }
+    #footer a { color: #ff85c0; text-decoration: none; }
+    #footer a:hover { color: #fff; }
+    .footer-stars { font-size: 1.5rem; color: var(--hot-pink); letter-spacing: 4px; text-shadow: 0 0 8px var(--hot-pink); display: block; margin-bottom: 6px; }
+
+    /* responsive */
+    @media(max-width:700px){
+      #wrapper { grid-template-columns: 1fr; }
+      #sidebar { grid-column: 1; grid-row: auto; }
+      #main { grid-column: 1; }
+      #projects-grid { grid-template-columns: 1fr 1fr; }
+      #gallery { grid-template-columns: repeat(2,1fr); }
+      #about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sparkle-layer" id="sparkleLayer"></div>
+
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <div class="logo">★ eya ★</div>
+  <a href="#" onclick="showPage('home')"       class="active" id="nav-home">Home</a>
+  <a href="#" onclick="showPage('about')"      id="nav-about">About</a>
+  <a href="#" onclick="showPage('gallery')"    id="nav-gallery">Gallery</a>
+  <a href="#" onclick="showPage('music')"      id="nav-music">Music</a>
+  <a href="#" onclick="showPage('blog')"       id="nav-blog">Blog</a>
+  <a href="#" onclick="showPage('contact')"    id="nav-contact">Contact</a>
+  <a href="#" onclick="showPage('guestbook')"  id="nav-guestbook">Guestbook</a>
+</nav>
+
+<div id="wrapper">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside id="sidebar">
+
+    <div class="panel" id="profile-card">
+      <div class="panel-head">✦ Profile ✦</div>
+      <div class="panel-body" style="text-align:center;">
+        <div class="avatar-wrap">
+          <img src="https://scontent.fmnl3-3.fna.fbcdn.net/v/t39.30808-6/498117530_4044550019143948_2175049101216186825_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFwq-3WkMTCaaXsPBPmoyMqABjlV9VTh38AGOVX1VOHfxFkB5KrCFbELVftaXwgJHCBH8PMezNvV6j8Y-_91N33&_nc_ohc=W8FWlHfl6aUQ7kNvwFOrwaQ&_nc_oc=Adoh-sEipIPEHAn4rdF5K7-d1xmIjwj8WWBfx-SQBxWLhsTJnajpQN_kZ0YLnSYNhlk&_nc_zt=23&_nc_ht=scontent.fmnl3-3.fna&_nc_gid=knafGYWNc9kSahyvG9lu8w&_nc_ss=7b2a8&oh=00_Af4pFXjY7x-H2brv25p0LJlB23B0j4bX3PhIDEvD-G2pXw&oe=6A10FD47" alt="Eya's avatar" />
+        </div>
+        <div class="username">Jeia Nicole Gargoles</div>
+        <div class="tagline">"living in a glitter nightmare ✦"</div>
+        <div style="font-size:0.85rem;color:#e8aacb;"><span class="online-dot"></span>online now</div>
+        <div class="mood-line">Mood: <span>☆ swing ☆</span></div>
+        <div class="mood-line">Age: <span>20 something</span></div>
+        <div class="mood-line">She / Her</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">✦ Navigate ✦</div>
+      <div class="panel-body sidebar-links" style="padding:0;">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About Me</a>
+        <a href="#" onclick="showPage('gallery')">Photo Gallery</a>
+        <a href="#" onclick="showPage('music')">My Music</a>
+        <a href="#" onclick="showPage('blog')">Blog / Diary</a>
+        <a href="#" onclick="showPage('contact')">Contact Me</a>
+        <a href="#" onclick="showPage('guestbook')">Guestbook</a>
+        <a href="https://tellonym.me/shetsharown" target="_blank">Tellonym ↗</a>
+        <a href="https://ph.pinterest.com/HallboutEyaa/" target="_blank">Pinterest ↗</a>
+        <a href="https://www.instagram.com/vieineya/" target="_blank">Instagram ↗</a>
+		<a href="https://open.spotify.com/user/43b5kmw45j7s7zxthddrp0qcx" target="_blank">Spotify ↗</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">✦ Interests ✦</div>
+      <div class="panel-body">
+        <div class="interest-row"><span class="label">Music:</span><span class="val">indie, alt-rock, emo</span></div>
+        <div class="interest-row"><span class="label">Art:</span><span class="val">Claude Monet</span></div>
+        <div class="interest-row"><span class="label">Film:</span><span class="val">horror, A24, foreign</span></div>
+        <div class="interest-row"><span class="label">Books:</span><span class="val">Fyodor Dostoevsky</span></div>
+        <div class="interest-row"><span class="label">Games:</span><span class="val">RPG and etc</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">✦ Visitors ✦</div>
+      <div id="visitor-wrap">visitors: <span id="vcounter">000000</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">✦ Now Playing ✦</div>
+      <div class="panel-body">
+        <div id="music-player">
+          <div class="track-info">
+            <div class="track-cover" id="trackCover">♪</div>
+            <div>
+              <div class="track-title" id="trackTitle">sugar we're goin down</div>
+              <div class="track-artist" id="trackArtist">fall out boy</div>
+            </div>
+          </div>
+          <div class="player-controls">
+            <button class="ctrl-btn" onclick="prevTrack()">◀</button>
+            <button class="ctrl-btn" onclick="togglePlay()" id="playBtn">▶</button>
+            <button class="ctrl-btn" onclick="nextTrack()">▶▶</button>
+            <div class="progress-bar" onclick="seekTrack(event)">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main id="main">
+
+    <!-- ── HOME ── -->
+    <section class="page-section active" id="page-home">
+
+      <div class="hero-banner">
+        <div class="hero-stars" id="heroStars"></div>
+        <div class="hero-content">
+          <h1>★ Welcome ★</h1>
+          <p>✦ make art. make noise. make love. ✦</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ My Blinkies ✦</div>
+        <div class="panel-body">
+          <div class="blinkies">
+            <span class="blinkie pink">SEVENTEEN 4 LIFE</span>
+            <span class="blinkie gold">★ JAMES PAGHUBASAN ★</span>
+            <span class="blinkie cyber">LOVE TO DIE</span>
+            <span class="blinkie purple">NIGHT OWL</span>
+            <span class="blinkie pink">BAD</span>
+            <span class="blinkie gold">PIXEL ADDICT</span>
+            <span class="blinkie cyber">DARK AESTHETIC</span>
+            <span class="blinkie purple">Y2K AESTHETIC</span>
+            <span class="blinkie pink">MAKE ART</span>
+            <span class="blinkie gold">NO SLEEP CLUB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Latest Updates ✦</div>
+        <div class="panel-body">
+          <div class="gb-entry">
+            <span class="gb-author">★ Around May!</span>
+            <span class="gb-date"> — May 2026</span>
+            <div class="gb-msg">with the sea</div>
+          </div>
+          <div class="gb-entry">
+            <span class="gb-author">★ Site Launch</span>
+            <span class="gb-date"> — May 2026</span>
+            <div class="gb-msg">Welcome to my portfolio!! Finally got around to setting this up 🖤</div>
+          </div>
+          <div class="gb-entry">
+            <span class="gb-author">★ Blog Post</span>
+            <span class="gb-date"> — Apr 2026</span>
+            <div class="gb-msg">New diary entry up: "A life with dim"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Featured Video ✦</div>
+        <div class="panel-body video-thumb-wrap">
+          <a href="https://www.youtube.com/watch?v=zhHB4dZTChw" target="_blank">
+            <img src="https://i.pinimg.com/736x/0a/68/49/0a6849c5b54d2983d8a5b456a97fca6c.jpg" alt="video thumbnail" />
+          </a>
+          <p class="watch-label">★ click to watch ★</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section class="page-section" id="page-about">
+
+      <div class="hero-banner small">
+        <div class="hero-content"><h1 style="font-size:0.8rem;">★ about me ★</h1></div>
+      </div>
+
+       <div id="about-grid">
+        <div class="panel">
+          <div class="panel-head">✦ Who Am I? ✦</div>
+          <div class="panel-body">
+            <p style="line-height:1.7;color:var(--text-dim);font-size:0.95rem;">
+              hey!! i'm a <span style="color:var(--hot-pink)">creative digital artist & web developer</span>
+              based somewhere in the universe ✦<br><br>
+              i make things with code and pixels and a whole lot of caffeine.
+              i believe design should feel like something —
+              not just look good, but <em>mean</em> something.<br><br>
+              when i'm not at my screen you'll find me at a bookshop,
+              a concert, or asleep at 6pm and awake at 3am.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">✦ Fun Facts ✦</div>
+          <div class="panel-body sidebar-links" style="padding:0;">
+            <a href="#">☆ obsessed with scuba style</a>
+            <a href="#">☆ collect y2k stuff</a>
+            <a href="#">☆ i love seventeen</a>
+            <a href="#">☆ i love dimdim</a>
+            <a href="#">☆ currently reading: Demons by Fyodor</a>
+            <a href="#">☆ MBTI: infp (obviously)</a>
+            <a href="#">☆ favourite colour: lavender + black</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Skills ✦</div>
+        <div class="panel-body">
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Fun stuff / Dancing <span>95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Styling <span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Watching Movies <span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Being Busy <span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Photography <span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:70%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label">Personal Space <span>65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--pct:65%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ My Setup ✦</div>
+        <div class="panel-body">
+          <div class="interest-row"><span class="label">OS:</span><span class="val">Windows 11 + WSL2</span></div>
+          <div class="interest-row"><span class="label">Art:</span><span class="val">Painting + Crochet</span></div>
+          <div class="interest-row"><span class="label">Music:</span><span class="val">Spotify playlist</span></div>
+          <div class="interest-row"><span class="label">Desk:</span><span class="val">pink LED chaos</span></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── GALLERY ── -->
+    <section class="page-section" id="page-gallery">
+
+      <div class="panel">
+        <div class="panel-head">✦ Photo Gallery ✦</div>
+        <div class="panel-body">
+          <p style="color:#e8aacb;font-size:0.92rem;margin-bottom:8px;">Bless ur eyes ✦ click any photo to enlarge</p>
+          <div id="gallery">
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/d8/07/7f/d8077f4bb5544b8282664529f20b1a12.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/d8/07/7f/d8077f4bb5544b8282664529f20b1a12.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/13/93/2c/13932ca360a98a12a1f613ce5f4e46aa.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/13/93/2c/13932ca360a98a12a1f613ce5f4e46aa.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/a7/24/13/a7241329392d3c6b8e23f5228b85c76a.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/a7/24/13/a7241329392d3c6b8e23f5228b85c76a.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/df/d3/65/dfd365103b13ca0d1c8261074d5dce7b.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/df/d3/65/dfd365103b13ca0d1c8261074d5dce7b.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/88/d0/a3/88d0a318d0de4d3c10b1647de49dfc1d.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/88/d0/a3/88d0a318d0de4d3c10b1647de49dfc1d.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/72/23/8a/72238aab866b1bb755c4f3ed70042a0b.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/72/23/8a/72238aab866b1bb755c4f3ed70042a0b.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/00/32/83/003283c80fcbc7465a44df2cfd29f400.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/00/32/83/003283c80fcbc7465a44df2cfd29f400.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+            <div class="gal-item" onclick="openLightbox('https://i.pinimg.com/736x/b9/fe/f2/b9fef2d5a3635d428c442f8e1929b3d5.jpg','Eya love dim')">
+              <img src="https://i.pinimg.com/736x/b9/fe/f2/b9fef2d5a3635d428c442f8e1929b3d5.jpg" alt="gallery" loading="lazy"/><div class="overlay">Eya love dim</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Video Diary ✦</div>
+        <div class="panel-body video-thumb-wrap">
+          <a href="https://www.youtube.com/watch?v=zhHB4dZTChw" target="_blank">
+            <img src="https://i.pinimg.com/736x/0a/68/49/0a6849c5b54d2983d8a5b456a97fca6c.jpg" alt="video thumbnail" />
+          </a>
+          <p class="watch-label">★ click to watch ★</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── MUSIC ── -->
+    <section class="page-section" id="page-music">
+
+      <div class="panel">
+        <div class="panel-head">✦ My Playlists ✦</div>
+        <div class="panel-body">
+          <p style="color:#e8aacb;margin-bottom:10px;font-size:0.95rem;">the soundtrack of my existence ↓</p>
+          <div id="projects-grid">
+            <div class="project-card" onclick="loadTrack(0)">
+              <h3>ROCK HOURS</h3>
+              <p>system of a down • mcr • paramore • korn • slipknot</p>
+              <span class="project-tag">album tracks</span>
+            </div>
+            <div class="project-card" onclick="loadTrack(1)">
+              <h3>MY CORE</h3>
+              <p>lana del rey • WISP • mitski • lily chou chou</p>
+              <span class="project-tag">album tracks</span>
+            </div>
+            <div class="project-card" onclick="loadTrack(2)">
+              <h3>KPOP</h3>
+              <p>seventeen • kiikii • blackpink • aespa • newjeans</p>
+              <span class="project-tag">album tracks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Favourite Lyrics ✦</div>
+        <div class="panel-body">
+          <div class="gb-entry">
+            <span class="gb-author">Lily Chou Chou</span>
+            <div class="gb-msg" style="font-style:italic;color:#ffd6ed;font-size:1.05rem;">"To be away from all, To be one, Of everything."</div>
+          </div>
+          <div class="gb-entry">
+            <span class="gb-author">Paramore</span>
+            <div class="gb-msg" style="font-style:italic;color:#ffd6ed;font-size:1.05rem;">"The only thing I ever felt was wrong with me was everything."</div>
+          </div>
+          <div class="gb-entry">
+            <span class="gb-author">Mitski</span>
+            <div class="gb-msg" style="font-style:italic;color:#ffd6ed;font-size:1.05rem;">"I don't want your pity, I just want somebody near me."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Playlist Video ✦</div>
+        <div class="panel-body video-thumb-wrap">
+          <a href="https://www.youtube.com/watch?v=zhHB4dZTChw" target="_blank">
+            <img src="https://i.pinimg.com/736x/0a/68/49/0a6849c5b54d2983d8a5b456a97fca6c.jpg" alt="video thumbnail" />
+          </a>
+          <p class="watch-label">★ click to watch ★</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── BLOG ── -->
+    <section class="page-section" id="page-blog">
+
+      <div class="hero-banner small">
+        <div class="hero-content"><h1 style="font-size:0.8rem;">★ blog / diary ★</h1></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Blog Entries ✦</div>
+        <div class="panel-body">
+
+          <div class="gb-entry" style="padding:12px 0;">
+            <div>
+              <span class="gb-author" style="font-size:1.05rem;">A life with dim</span>
+              <span class="gb-date"> — April 28, 2026</span>
+            </div>
+            <p class="blog-body" style="margin-top:6px;">
+              there are days where the light feels different. softer. like someone put a lavender filter over reality.
+              those are the days i think about dim the most —
+              how someone can just <em>exist</em> in your life and rearrange everything without even trying...
+            </p>
+            <span class="read-more-btn" onclick="toggleReadMore(this)">[ read more ↓ ]</span>
+            <div class="read-more-content">
+              <p class="blog-body">
+                i started listening to seventeen differently now. songs that used to just sound good now sound like
+                <em>something i needed to hear</em>. i think that's what it means to have someone change the way you
+                experience art — they become part of every beautiful thing you encounter after.<br><br>
+                anyway. dim. you're annoying. i love that about you. goodnight 🖤
+              </p>
+            </div>
+          </div>
+
+          <div class="gb-entry" style="padding:12px 0;">
+            <div>
+              <span class="gb-author" style="font-size:1.05rem;">thoughts at 3am and why aesthetics matter</span>
+              <span class="gb-date"> — April 10, 2026</span>
+            </div>
+            <p class="blog-body" style="margin-top:6px;">
+              it's 3am and i'm in a Pinterest spiral again. there's something about the way a carefully curated image
+              board can feel like a whole <em>mood</em> — like a frequency you tune into...
+            </p>
+            <span class="read-more-btn" onclick="toggleReadMore(this)">[ read more ↓ ]</span>
+            <div class="read-more-content">
+              <p class="blog-body">
+                i think aesthetics are how some of us process emotion. when i'm sad i make things dark and grainy and
+                beautiful. when i'm hopeful everything gets soft and golden and a little blurry at the edges.
+                it's not shallow — it's a visual diary.<br><br>
+                okay it's 4am now. i should sleep. i won't. goodnight 🌙
+              </p>
+            </div>
+          </div>
+
+          <div class="gb-entry" style="padding:12px 0;">
+            <div>
+              <span class="gb-author" style="font-size:1.05rem;">why i made this site look like a 2006 MySpace</span>
+              <span class="gb-date"> — May 1, 2026</span>
+            </div>
+            <p class="blog-body" style="margin-top:6px;">
+              everyone's portfolio looks the same. white background. clean layout. and they all look... fine.
+              fine is boring. i wanted mine to feel like <em>something</em>...
+            </p>
+            <span class="read-more-btn" onclick="toggleReadMore(this)">[ read more ↓ ]</span>
+            <div class="read-more-content">
+              <p class="blog-body">
+                so i made it look like my brain: chaotic, pink, full of stars, a little too much.
+                the blinking things. the spinning ★. the music player that doesn't actually play music.
+                it's honest. it's me.<br><br>
+                if someone doesn't get it, we probably weren't compatible anyway. ★
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Leave a Comment ✦</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>YOUR NAME</label>
+            <input type="text" id="blogName" placeholder="anonymous" />
+          </div>
+          <div class="form-group">
+            <label>YOUR THOUGHT</label>
+            <textarea id="blogComment" placeholder="leave a comment!!"></textarea>
+          </div>
+          <button class="btn-send" onclick="postComment()">POST ★</button>
+          <div class="send-msg" id="commentMsg"></div>
+          <div id="blogComments" style="margin-top:10px;"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="page-section" id="page-contact">
+
+      <div class="hero-banner small">
+        <div class="hero-content"><h1 style="font-size:0.8rem;">★ contact me ★</h1></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Send Me A Message ✦</div>
+        <div class="panel-body">
+          <p style="color:#e8aacb;margin-bottom:14px;font-size:0.95rem;">
+            wanna collab? have a project idea? just wanna say hi? ✦
+          </p>
+          <div class="form-group">
+            <label>YOUR NAME ★</label>
+            <input type="text" id="cName" placeholder="e.g. xo_chaos_xo" />
+          </div>
+          <div class="form-group">
+            <label>YOUR EMAIL ★</label>
+            <input type="email" id="cEmail" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>SUBJECT ★</label>
+            <input type="text" id="cSubject" placeholder="collab / question / just saying hi" />
+          </div>
+          <div class="form-group">
+            <label>MESSAGE ★</label>
+            <textarea id="cMessage" placeholder="tell me everything..."></textarea>
+          </div>
+          <button class="btn-send" onclick="sendContact()">SEND ✦</button>
+          <div class="send-msg" id="contactMsg"></div>
+        </div>
+      </div>
+
+      <div id="about-grid">
+        <div class="panel">
+          <div class="panel-head">✦ Find Me ✦</div>
+          <div class="panel-body sidebar-links" style="padding:0;">
+            <a href="https://tellonym.me/shetsharown" target="_blank">💬 Tellonym</a>
+            <a href="https://ph.pinterest.com/HallboutEyaa/" target="_blank">📌 Pinterest</a>
+            <a href="https://www.instagram.com/vieineya/" target="_blank">📸 Instagram</a>
+			<a href="https://open.spotify.com/user/43b5kmw45j7s7zxthddrp0qcx" target="_blank">♫ Spotify</a>
+			<a href="https://www.last.fm/user/jrrya" target="_blank">☁ Lastfm</a>
+			
+			
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">✦ Open For ✦</div>
+          <div class="panel-body sidebar-links" style="padding:0;">
+            <a href="#">✦ Creative collabs</a>
+            <a href="#">✦ projects</a>
+            <a href="#">✦ Photography</a>
+            <a href="#">✦ Art commissions</a>
+            <a href="#">✦ Coloring book</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── GUESTBOOK ── -->
+    <section class="page-section" id="page-guestbook">
+
+      <div class="hero-banner small">
+        <div class="hero-content"><h1 style="font-size:0.8rem;">★ guestbook ★</h1></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">✦ Guestbook ✦</div>
+        <div class="panel-body">
+          <p style="color:#e8aacb;font-size:0.92rem;margin-bottom:10px;">sign my guestbook!! leave ur mark ✦</p>
+          <div class="guestbook-entries" id="guestbook-list">
+            <div class="gb-entry">
+              <div><span class="gb-author">stargirlxo</span> <span class="gb-date">May 2026</span></div>
+              <div class="gb-msg">omg love the aesthetic of this site so much!! ★★★</div>
+            </div>
+            <div class="gb-entry">
+              <div><span class="gb-author">night_owl404</span> <span class="gb-date">Apr 2026</span></div>
+              <div class="gb-msg">ur gallery is everything!! 🖤</div>
+            </div>
+            <div class="gb-entry">
+              <div><span class="gb-author">glitter.witch</span> <span class="gb-date">Apr 2026</span></div>
+              <div class="gb-msg">leaving my mark here ✦ come check out my site too!!</div>
+            </div>
+          </div>
+          <div class="gb-form">
+            <input type="text" id="gbName" placeholder="your name" />
+            <input type="text" id="gbMsg" placeholder="leave a message ✦" />
+            <button class="btn-mini" onclick="signGuestbook()">SIGN ★</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div class="close-lb">✕</div>
+  <img id="lbImg" src="" alt="" />
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <span class="footer-stars">★ ☆ ★ ☆ ★ ☆ ★</span>
+  <p>★ made with love, energy drink &amp; bad decisions ★</p>
+  <p style="margin-top:4px;">
+    <a href="#" onclick="showPage('home')">home</a> ·
+    <a href="#" onclick="showPage('about')">about</a> ·
+    <a href="#" onclick="showPage('gallery')">gallery</a> ·
+    <a href="#" onclick="showPage('music')">music</a> ·
+    <a href="#" onclick="showPage('blog')">blog</a> ·
+    <a href="#" onclick="showPage('contact')">contact</a> ·
+    <a href="#" onclick="showPage('guestbook')">guestbook</a>
+  </p>
+  <p style="margin-top:6px;color:rgba(232,170,203,0.5);font-size:0.75rem;">© 2026 Jeia Nicole Gargoles · all rights reserved · best viewed with good vibes ★</p>
+</footer>
+
+<script>
+  // ── SPARKLES ──
+  const sparkleLayer = document.getElementById('sparkleLayer');
+  const SPARKS = ['★','✦','✩','☆','✧','♡','✪'];
+  for(let i=0;i<18;i++){
+    const s = document.createElement('span');
+    s.className = 'sparkle';
+    s.textContent = SPARKS[Math.floor(Math.random()*SPARKS.length)];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.fontSize = (0.8 + Math.random()*1.4) + 'rem';
+    s.style.color = ['#ff2d78','#ffd700','#cc88ff','#ff85c0','#00fff7'][Math.floor(Math.random()*5)];
+    s.style.animationDuration = (8 + Math.random()*14) + 's';
+    s.style.animationDelay = (Math.random()*10) + 's';
+    sparkleLayer.appendChild(s);
+  }
+
+  // ── HERO STARS ──
+  const heroStars = document.getElementById('heroStars');
+  if(heroStars){
+    for(let i=0;i<40;i++){
+      const s = document.createElement('span');
+      s.className = 'hero-star';
+      s.textContent = ['★','☆','✦'][Math.floor(Math.random()*3)];
+      s.style.margin = (4+Math.random()*8)+'px';
+      s.style.fontSize = (1.5+Math.random()*2)+'rem';
+      s.style.animationDelay = (Math.random()*3)+'s';
+      s.style.animationDuration = (1.5+Math.random()*2)+'s';
+      heroStars.appendChild(s);
+    }
+  }
+
+  // ── SPA NAVIGATION ──
+  function showPage(name) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('#navbar a').forEach(a => a.classList.remove('active'));
+    const el = document.getElementById('page-'+name);
+    if(el) el.classList.add('active');
+    const navEl = document.getElementById('nav-'+name);
+    if(navEl) navEl.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    return false;
+  }
+
+  // ── VISITOR COUNTER ──
+  let vc = parseInt(localStorage.getItem('eya_vc') || '4300') + 1;
+  localStorage.setItem('eya_vc', vc);
+  document.getElementById('vcounter').textContent = String(vc).padStart(6,'0');
+
+  // ── LIGHTBOX ──
+  function openLightbox(src, caption) {
+    document.getElementById('lbImg').src = src;
+    document.getElementById('lbCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // ── READ MORE TOGGLE ──
+  function toggleReadMore(btn) {
+    const content = btn.nextElementSibling;
+    const isOpen = content.classList.toggle('open');
+    btn.textContent = isOpen ? '[ read less ↑ ]' : '[ read more ↓ ]';
+  }
+
+  // ── MUSIC PLAYER ──
+  const tracks = [
+    { title: "sugar we're goin down", artist: "Fall Out Boy" },
+    { title: "Helena", artist: "My Chemical Romance" },
+    { title: "Misery Business", artist: "Paramore" },
+    { title: "Aju Nice", artist: "Seventeen" },
+    { title: "Glide", artist: "Lily Chou Chou" },
+  ];
+  let currentTrack = 0, isPlaying = false, progress = 0, progressInterval;
+
+  function updateTrackUI() {
+    document.getElementById('trackTitle').textContent = tracks[currentTrack].title;
+    document.getElementById('trackArtist').textContent = tracks[currentTrack].artist;
+  }
+  function togglePlay() {
+    isPlaying = !isPlaying;
+    document.getElementById('playBtn').textContent = isPlaying ? '⏸' : '▶';
+    document.getElementById('trackCover').classList.toggle('playing', isPlaying);
+    if(isPlaying) {
+      progressInterval = setInterval(() => {
+        progress = (progress + 0.5) % 100;
+        document.getElementById('progressFill').style.width = progress + '%';
+      }, 200);
+    } else { clearInterval(progressInterval); }
+  }
+  function nextTrack() { currentTrack=(currentTrack+1)%tracks.length; progress=0; updateTrackUI(); }
+  function prevTrack() { currentTrack=(currentTrack-1+tracks.length)%tracks.length; progress=0; updateTrackUI(); }
+  function loadTrack(i) { currentTrack=i%tracks.length; progress=0; updateTrackUI(); if(!isPlaying) togglePlay(); }
+  function seekTrack(e) {
+    const bar=e.currentTarget, rect=bar.getBoundingClientRect();
+    progress=((e.clientX-rect.left)/rect.width)*100;
+    document.getElementById('progressFill').style.width=progress+'%';
+  }
+
+  // ── CONTACT FORM ──
+  function sendContact() {
+    const n=document.getElementById('cName').value.trim();
+    const e=document.getElementById('cEmail').value.trim();
+    const m=document.getElementById('cMessage').value.trim();
+    const msg=document.getElementById('contactMsg');
+    if(!n||!e||!m){ msg.style.color='#ff2d78'; msg.textContent='★ please fill all fields!!'; return; }
+    msg.style.color='#00ff88';
+    msg.textContent="★ message sent!! i'll reply soon xoxo ★";
+    ['cName','cEmail','cSubject','cMessage'].forEach(id=>document.getElementById(id).value='');
+    setTimeout(()=>msg.textContent='',4000);
+  }
+
+  // ── BLOG COMMENT ──
+  function postComment() {
+    const name=document.getElementById('blogName').value.trim()||'anonymous';
+    const msg=document.getElementById('blogComment').value.trim();
+    const msgEl=document.getElementById('commentMsg');
+    if(!msg){ msgEl.style.color='#ff2d78'; msgEl.textContent='★ write something first!!'; return; }
+    const entry=document.createElement('div');
+    entry.className='gb-entry';
+    entry.innerHTML=`<div><span class="gb-author">${name}</span> <span class="gb-date">just now</span></div><div class="gb-msg">${msg}</div>`;
+    document.getElementById('blogComments').prepend(entry);
+    msgEl.style.color='#00ff88'; msgEl.textContent='★ comment posted!!';
+    document.getElementById('blogName').value='';
+    document.getElementById('blogComment').value='';
+    setTimeout(()=>msgEl.textContent='',3000);
+  }
+
+  // ── GUESTBOOK ──
+  function signGuestbook() {
+    const name=document.getElementById('gbName').value.trim()||'anonymous';
+    const msg=document.getElementById('gbMsg').value.trim();
+    if(!msg) return;
+    const entry=document.createElement('div');
+    entry.className='gb-entry';
+    entry.innerHTML=`<div><span class="gb-author">${name}</span> <span class="gb-date">just now</span></div><div class="gb-msg">${msg}</div>`;
+    document.getElementById('guestbook-list').prepend(entry);
+    document.getElementById('gbName').value='';
+    document.getElementById('gbMsg').value='';
+  }
+</script>
+</body>
+</html>
